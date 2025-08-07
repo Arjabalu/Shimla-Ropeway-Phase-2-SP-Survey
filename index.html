@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shimla Ropeway Project Phase 2 Survey</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f4f4f4;
+        }
+        .survey-container {
+            max-width: 800px;
+            margin: auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        input[type="text"], select, input[type="number"] {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        input[type="radio"] {
+            margin-right: 5px;
+        }
+        .radio-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #28a745;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+        .sub-question {
+            margin-left: 20px;
+            margin-top: 10px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="survey-container">
+        <h1>Shimla Ropeway Project Phase 2 Survey</h1>
+        <form id="surveyForm" name="submit-to-google-sheet">
+            <div class="form-group">
+                <label for="location">1. Location Name (Geo Tagging)</label>
+                <input type="text" id="location" name="location" required>
+            </div>
+            <div class="form-group">
+                <label for="respondentName">2. Name of the Respondent</label>
+                <input type="text" id="respondentName" name="respondentName" required>
+            </div>
+            <div class="form-group">
+                <label for="age">3. Age</label>
+                <input type="number" id="age" name="age" min="1" required>
+            </div>
+            <div class="form-group">
+                <label>4. Sex</label>
+                <div class="radio-group">
+                    <label><input type="radio" name="sex" value="Male" required> Male</label>
+                    <label><input type="radio" name="sex" value="Female"> Female</label>
+                    <label><input type="radio" name="sex" value="Other"> Other</label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>5. Type of Respondent</label>
+                <div class="radio-group">
+                    <label><input type="radio" name="TypeOfRespondent" value="Local" required> Local</label>
+                    <label><input type="radio" name="TypeOfRespondent" value="Tourist"> Tourist</label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="income">6. Monthly Income</label>
+                <select id="income" name="income" required>
+                    <option value="">Select Income Range</option>
+                    <option value="Less than Rs 5000">Less than Rs 5000</option>
+                    <option value="Rs 5000 - Rs 7500">Rs 5,000 - Rs 7,500</option>
+                    <option value="Rs 7500 - Rs 10000">Rs 7,500 - Rs 10,000</option>
+                    <option value="Rs 10000 - Rs 15000">Rs 10,000 - Rs 15,000</option>
+                    <option value="Rs 15000 - Rs 20000">Rs 15,000 - Rs 20,000</option>
+                    <option value="Rs 20000 - Rs 30000">Rs 20,000 - Rs 30,000</option>
+                    <option value="Rs 30000 - Rs 40000">Rs 30,000 - Rs 40,000</option>
+                    <option value="Rs 40000 - Rs 50000">Rs 40,000 - Rs 50,000</option>
+                    <option value="Rs 50000 - Rs 75000">Rs 50,000 - Rs 75,000</option>
+                    <option value="Greater than Rs 75000">Greater than Rs 75,000</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="occupation">7. Occupation</label>
+                <select id="occupation" name="occupation" required>
+                    <option value="">Select Occupation</option>
+                    <option value="Service (Govt. Sector)">Service (Govt. Sector)</option>
+                    <option value="Service (Pvt. Sector)">Service (Pvt. Sector)</option>
+                    <option value="Business (Small Scale)">Business (Small Scale)</option>
+                    <option value="Business (Large Scale)">Business (Large Scale)</option>
+                    <option value="Self Employed">Self Employed</option>
+                    <option value="Farmer">Farmer</option>
+                    <option value="Worker / Labour">Worker / Labour</option>
+                    <option value="Housewife">Housewife</option>
+                    <option value="Student">Student</option>
+                    <option value="Unemployed">Unemployed</option>
+                    <option value="Retired">Retired</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="homePlace">8. Place of Home</label>
+                <input type="text" id="homePlace" name="homePlace" required>
+            </div>
+            <div class="form-group">
+                <label for="workPlace">9. Place of Work</label>
+                <input type="text" id="workPlace" name="workPlace" required>
+            </div>
+            <div class="form-group">
+                <label for="tripOrigin">10. Origin of the Trip</label>
+                <input type="text" id="tripOrigin" name="tripOrigin" required>
+            </div>
+            <div class="form-group">
+                <label for="tripDestination">11. Destination of the Trip</label>
+                <input type="text" id="tripDestination" name="tripDestination" required>
+            </div>
+            <div class="form-group">
+                <label for="tripMode">12. Mode of the Trip</label>
+                <select id="tripMode" name="tripMode" required>
+                    <option value="">Select Mode</option>
+                    <option value="Walk">Walk</option>
+                    <option value="Two Wheeler">Two Wheeler</option>
+                    <option value="Car">Car</option>
+                    <option value="Taxi">Taxi</option>
+                    <option value="Govt Bus">Govt Bus</option>
+                    <option value="Other">Other (Please Specify)</option>
+                </select>
+                <input type="text" id="otherMode" name="otherMode" placeholder="Specify if Other" style="display:none;">
+                <div id="busQuestions" class="sub-question">
+                    <div class="form-group">
+                        <label for="travelTimeOriginBusStop">12a. Travel Time to Origin Bus Stop (in minutes)</label>
+                        <input type="number" id="travelTimeOriginBusStop" name="travelTimeOriginBusStop" min="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="travelTimeDestinationBusStop">12b. Travel Time from Destination Bus Stop (in minutes)</label>
+                        <input type="number" id="travelTimeDestinationBusStop" name="travelTimeDestinationBusStop" min="0">
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="tripPurpose">13. Purpose of the Trip</label>
+                <select id="tripPurpose" name="tripPurpose" required>
+                    <option value="">Select Purpose</option>
+                    <option value="Work">Work</option>
+                    <option value="Education">Education</option>
+                    <option value="Business">Business</option>
+                    <option value="Recreation/Religious">Recreation/Religious</option>
+                    <option value="Health/Hospital">Health/Hospital</option>
+                    <option value="Social">Social</option>
+                    <option value="Shopping">Shopping</option>
+                    <option value="Return Trip">Return Trip</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="travelTime">14. Travel Time (in minutes)</label>
+                <input type="number" id="travelTime" name="travelTime" min="0" required>
+                <small id="travelTimeNote" style="display:none;">Note: For Govt Bus, this is the time spent on the bus, excluding travel to/from bus stops.</small>
+            </div>
+            <div class="form-group">
+                <label for="travelCost">15. Travel Cost (in Rs)</label>
+                <input type="number" id="travelCost" name="travelCost" min="0" required>
+            </div>
+            <div class="form-group">
+                <label>16. Are you aware of the Ropeway?</label>
+                <div class="radio-group">
+                    <label><input type="radio" name="ropewayAwareness" value="Yes" required> Yes</label>
+                    <label><input type="radio" name="ropewayAwareness" value="No"> No</label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>17. If Ropeway reduces the travel time, are you willing to shift?</label>
+                <div class="radio-group">
+                    <label><input type="radio" name="shiftTimeReduction" value="Yes" required> Yes</label>
+                    <label><input type="radio" name="shiftTimeReduction" value="No"> No</label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label id="shift15PercentLabel">18. If your travel time is reduced to <span id="reducedTime15">0</span> minutes with a cost of <span id="increasedCost15">0</span> Rs, will you shift?</label>
+                <div class="radio-group">
+                    <label><input type="radio" name="shift15Percent" value="Yes" required> Yes</label>
+                    <label><input type="radio" name="shift15Percent" value="No"> No</label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label id="shift25PercentLabel">19. If your travel time is reduced to <span id="reducedTime25">0</span> minutes with a cost of <span id="increasedCost25">0</span> Rs, will you shift?</label>
+                <div class="radio-group">
+                    <label><input type="radio" name="shift25Percent" value="Yes" required> Yes</label>
+                    <label><input type="radio" name="shift25Percent" value="No"> No</label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label id="shift50PercentLabel">20. If your travel time is reduced to <span id="reducedTime50">0</span> minutes with a cost of <span id="increasedCost50">0</span> Rs, will you shift?</label>
+                <div class="radio-group">
+                    <label><input type="radio" name="shift50Percent" value="Yes" required> Yes</label>
+                    <label><input type="radio" name="shift50Percent" value="No"> No</label>
+                </div>
+            </div>
+            <button type="submit">Submit Survey</button>
+        </form>
+    </div>
+
+    <script>
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbxC9qhCwqiFBQ8c1ekLgGmn4etGFj3XB_gxdIPb-wZEtnvDcmuzapnQ7zvYchhcsRc0Qw/exec'; // Replace with your Google Apps Script Web app URL
+        const form = document.forms['submit-to-google-sheet'];
+        const travelTimeInput = document.getElementById('travelTime');
+        const travelCostInput = document.getElementById('travelCost');
+        const reducedTime15 = document.getElementById('reducedTime15');
+        const increasedCost15 = document.getElementById('increasedCost15');
+        const reducedTime25 = document.getElementById('reducedTime25');
+        const increasedCost25 = document.getElementById('increasedCost25');
+        const reducedTime50 = document.getElementById('reducedTime50');
+        const increasedCost50 = document.getElementById('increasedCost50');
+        const tripModeSelect = document.getElementById('tripMode');
+        const busQuestionsDiv = document.getElementById('busQuestions');
+        const travelTimeOriginBusStop = document.getElementById('travelTimeOriginBusStop');
+        const travelTimeDestinationBusStop = document.getElementById('travelTimeDestinationBusStop');
+        const travelTimeNote = document.getElementById('travelTimeNote');
+
+        function calculateTotalTravelTime() {
+            const baseTravelTime = parseFloat(travelTimeInput.value) || 0;
+            const isBus = tripModeSelect.value === 'Govt Bus';
+            const originBusTime = isBus ? parseFloat(travelTimeOriginBusStop.value) || 0 : 0;
+            const destinationBusTime = isBus ? parseFloat(travelTimeDestinationBusStop.value) || 0 : 0;
+            return baseTravelTime + originBusTime + destinationBusTime;
+        }
+
+        function updateLabels() {
+            const totalTravelTime = calculateTotalTravelTime();
+            const travelCost = parseFloat(travelCostInput.value) || 0;
+
+            reducedTime15.textContent = Math.round(totalTravelTime * 0.85);
+            increasedCost15.textContent = Math.round((travelCost * 1.15) / 5) * 5;
+            reducedTime25.textContent = Math.round(totalTravelTime * 0.75);
+            increasedCost25.textContent = Math.round((travelCost * 1.25) / 5) * 5;
+            reducedTime50.textContent = Math.round(totalTravelTime * 0.50);
+            increasedCost50.textContent = Math.round((travelCost * 1.50) / 5) * 5;
+        }
+
+        function toggleBusQuestions() {
+            const isBus = tripModeSelect.value === 'Govt Bus';
+            busQuestionsDiv.style.display = isBus ? 'block' : 'none';
+            travelTimeNote.style.display = isBus ? 'block' : 'none';
+            travelTimeOriginBusStop.required = isBus;
+            travelTimeDestinationBusStop.required = isBus;
+            updateLabels();
+        }
+
+        travelTimeInput.addEventListener('input', updateLabels);
+        travelCostInput.addEventListener('input', updateLabels);
+        travelTimeOriginBusStop.addEventListener('input', updateLabels);
+        travelTimeDestinationBusStop.addEventListener('input', updateLabels);
+        tripModeSelect.addEventListener('change', function() {
+            const otherModeInput = document.getElementById('otherMode');
+            otherModeInput.style.display = this.value === 'Other' ? 'block' : 'none';
+            otherModeInput.required = this.value === 'Other';
+            toggleBusQuestions();
+        });
+
+        form.addEventListener('submit', e => {
+            e.preventDefault();
+            const totalTravelTime = calculateTotalTravelTime();
+            const travelCost = parseFloat(travelCostInput.value) || 0;
+            const formData = new FormData(form);
+            formData.append('TotalTravelTime', totalTravelTime.toFixed(2));
+            formData.append('ReducedTime15', Math.round(totalTravelTime * 0.85));
+            formData.append('IncreasedCost15', Math.round((travelCost * 1.15) / 5) * 5);
+            formData.append('ReducedTime25', Math.round(totalTravelTime * 0.75));
+            formData.append('IncreasedCost25', Math.round((travelCost * 1.25) / 5) * 5);
+            formData.append('ReducedTime50', Math.round(totalTravelTime * 0.50));
+            formData.append('IncreasedCost50', Math.round((travelCost * 1.50) / 5) * 5);
+
+            // Log form data for debugging
+            const formDataObj = {};
+            formData.forEach((value, key) => { formDataObj[key] = value; });
+            console.log('Submitting data:', formDataObj);
+
+            fetch(scriptURL, { method: 'POST', body: formData })
+                .then(response => {
+                    if (response.ok) {
+                        return response.json();
+                    } else {
+                        throw new Error('Network response was not ok.');
+                    }
+                })
+                .then(data => {
+                    console.log('Response from server:', data);
+                    alert('Survey submitted successfully!');
+                    form.reset();
+                    document.getElementById('otherMode').style.display = 'none';
+                    busQuestionsDiv.style.display = 'none';
+                    travelTimeNote.style.display = 'none';
+                    reducedTime15.textContent = '0';
+                    increasedCost15.textContent = '0';
+                    reducedTime25.textContent = '0';
+                    increasedCost25.textContent = '0';
+                    reducedTime50.textContent = '0';
+                    increasedCost50.textContent = '0';
+                })
+                .catch(error => {
+                    console.error('Error!', error.message);
+                    alert('Error submitting survey: ' + error.message);
+                });
+        });
+
+        toggleBusQuestions(); // Initialize bus questions visibility
+    </script>
+</body>
+</html>
